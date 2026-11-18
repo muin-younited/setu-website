@@ -1,6 +1,8 @@
-.idea/ 
-.env* 
-node_modules/ 
-vendor/ 
-setu-website/ 
-private/ 
+.idea/
+.env*
+node_modules/
+vendor/
+setu-website/
+private/data/
+dist/
+
