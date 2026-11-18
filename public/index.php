@@ -1,295 +1,522 @@
-<?php $c = require __DIR__ . '/../private/config.php'; $c = $c['contact']; function h($v){return htmlspecialchars((string)$v, ENT_QUOTES, 'UTF-8');} ?>
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Setu Digital Solutions</title>
-<style>
-:root { --navy:#102a56; --blue:#0878f9; --cyan:#00c8d9; --green:#48c83e; --ink:#18304f; --muted:#62748b; }
-* { box-sizing:border-box; }
-html { scroll-behavior:smooth; }
-body { margin:0; font-family:Arial,Helvetica,sans-serif; color:var(--ink); background:#f7fbff; }
-.wrap { width:min(1120px,92%); margin:auto; }
-header { background:#fff; border-bottom:1px solid #e5edf6; }
-nav { display:flex; align-items:center; justify-content:space-between; gap:20px; min-height:82px; }
-.logo { width:190px; max-height:72px; object-fit:contain; }
-.links { display:flex; gap:22px; font-size:14px; font-weight:bold; }
-a { color:inherit; text-decoration:none; }
-.btn { display:inline-block; padding:13px 18px; border-radius:12px; color:#fff; background:linear-gradient(110deg,var(--blue),var(--cyan)); font-weight:bold; }
-.hero { padding:65px 0; background:linear-gradient(120deg,#fff,#eef8ff 65%,#f3fff1); }
-.hero-grid { display:grid; grid-template-columns:1.1fr .9fr; align-items:center; gap:40px; }
-.eyebrow { display:inline-block; background:#e7f6ff; color:#0878bd; border-radius:30px; padding:8px 12px; font-size:12px; font-weight:bold; }
-h1 { color:var(--navy); font-size:clamp(38px,5vw,64px); line-height:1.08; margin:20px 0; }
-h1 span { background:linear-gradient(90deg,var(--blue),var(--cyan),var(--green)); -webkit-background-clip:text; color:transparent; }
-p { line-height:1.7; color:var(--muted); }
-.hero p { font-size:18px; max-width:620px; }
-.hero-logo { display:flex; align-items:center; justify-content:center; padding:20px; min-height:300px; background:linear-gradient(135deg,#e8f6ff,#f0fff0); border-radius:28px; }
-.hero-logo img { width:min(100%,330px); height:auto; object-fit:contain; }
-.actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:25px; }
-section { padding:65px 0; }
-.heading { max-width:720px; margin-bottom:30px; }
-.kicker { color:#0795b7; font-size:12px; letter-spacing:2px; font-weight:bold; }
-h2 { color:var(--navy); font-size:clamp(28px,3.5vw,42px); margin:12px 0; }
-.cards { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
-.card { background:#fff; border:1px solid #e1ebf5; border-radius:18px; padding:24px; box-shadow:0 8px 25px #102a5608; }
-.card h3 { color:var(--navy); margin:0 0 10px; }
-.card p { font-size:14px; margin-bottom:0; }
-.strip { background:linear-gradient(120deg,#eff8ff,#f4fff1); border-block:1px solid #e5f0f7; }
-.chips { display:flex; flex-wrap:wrap; gap:10px; }
-.chip { background:#fff; border:1px solid #dceaf5; border-radius:11px; padding:12px 15px; font-weight:bold; font-size:14px; }
-.team { text-align:center; }
-.avatar { width:72px; height:72px; margin:0 auto 15px; border-radius:22px; display:grid; place-items:center; color:#fff; font-weight:bold; font-size:24px; background:linear-gradient(135deg,var(--blue),var(--cyan),var(--green)); }
-.role { color:#0797b2; font-size:11px; font-weight:bold; letter-spacing:1px; margin:8px 0 12px; }
-.cta { background:linear-gradient(110deg,var(--navy),var(--blue),var(--cyan)); color:white; border-radius:25px; padding:35px; display:flex; align-items:center; justify-content:space-between; gap:20px; }
-.cta h2 { color:white; margin-top:0; }
-.cta p { color:#e5f5ff; }
-footer { background:var(--navy); color:#dce9f7; padding:30px 0; }
-footer .foot { display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap; }
-footer img { width:155px; height:auto; }
-footer p { color:#b9cce2; font-size:13px; }
-@media(max-width:800px) { .links { display:none; } .hero-grid { grid-template-columns:1fr; } .cards { grid-template-columns:repeat(2,1fr); } .cta { flex-direction:column; align-items:flex-start; } }
-@media(max-width:540px) { .cards { grid-template-columns:1fr; } nav { min-height:70px; } .logo { width:150px; } section { padding:48px 0; } .hero { padding:42px 0; } }
+<?php
+require __DIR__ . '/../private/layout.php';
+$c = setu_site_config()['contact'];
+$baseUrl = setu_base_url();
 
-.dev-head{display:grid;grid-template-columns:170px 1fr;gap:28px;align-items:start;max-width:850px;margin:22px auto 0;background:#fff;border:1px solid #e1ebf5;border-radius:24px;padding:24px;box-shadow:0 10px 30px #102a5609}
-.dev-photo{width:150px;height:190px;aspect-ratio:35/45;object-fit:cover;object-position:center 20%;border-radius:12px;background:#eef6fb;display:block;margin:0 auto;box-shadow:0 5px 16px #102a5615}
-.dev-label{font-size:11px;letter-spacing:1.5px;font-weight:800;color:#0797b2;text-transform:uppercase}
-.dev-head h3{font-size:27px;color:#102a56;margin:10px 0}
-.dev-head p{font-size:15px;line-height:1.75;margin:0 0 12px}
-.dev-points{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
-.dev-points span{font-size:12px;font-weight:700;color:#31506f;background:#eef8ff;border:1px solid #dcecf7;border-radius:30px;padding:8px 11px}
-@media(max-width:600px){.dev-head{grid-template-columns:1fr}.dev-photo{height:340px;object-fit:contain;object-position:center center}}
+setu_render_header([
+    'active'       => 'home',
+    'path'         => '/',
+    'title'        => 'Setu Digital Solutions | Tally Prime Customization, TDL Development, ERP Integration & Business Software',
+    'description'  => 'Setu Digital Solutions is a trusted business technology partner in Lucknow, India providing Tally Prime customization, TDL development, ERP & API integration, SetuLink, eDocSuite, Setu AI, and industry-specific Tally solutions.',
+    'extra_schema' => [
+        [
+            '@type'           => 'ItemList',
+            '@id'             => $baseUrl . '/#products-list',
+            'name'            => 'Setu Digital Solutions Featured Products',
+            'itemListElement' => [
+                [
+                    '@type'    => 'ListItem',
+                    'position' => 1,
+                    'item'     => [
+                        '@type'               => 'SoftwareApplication',
+                        'name'                => 'SetuLink',
+                        'url'                 => $baseUrl . '/products.php#setulink',
+                        'applicationCategory' => 'BusinessApplication',
+                        'operatingSystem'     => 'Web, Android, iOS, Tally Prime',
+                        'provider'            => ['@id' => $baseUrl . '/#organization'],
+                        'description'         => 'Connect your field team with Tally through a simple web and mobile experience for live ledgers, outstanding bills, and order booking.',
+                    ],
+                ],
+                [
+                    '@type'    => 'ListItem',
+                    'position' => 2,
+                    'item'     => [
+                        '@type'               => 'SoftwareApplication',
+                        'name'                => 'eDocSuite',
+                        'url'                 => $baseUrl . '/products.php#edocsuite',
+                        'applicationCategory' => 'BusinessApplication',
+                        'operatingSystem'     => 'Web, Windows, Tally Prime',
+                        'provider'            => ['@id' => $baseUrl . '/#organization'],
+                        'description'         => 'Keep supporting documents, bills, and invoices organized and accessible alongside your Tally business records.',
+                    ],
+                ],
+                [
+                    '@type'    => 'ListItem',
+                    'position' => 3,
+                    'item'     => [
+                        '@type'               => 'SoftwareApplication',
+                        'name'                => 'Setu AI',
+                        'url'                 => $baseUrl . '/products.php#setu-ai',
+                        'applicationCategory' => 'BusinessApplication',
+                        'operatingSystem'     => 'Web, Tally Prime',
+                        'provider'            => ['@id' => $baseUrl . '/#organization'],
+                        'description'         => 'Explore business insights and smarter ways to understand financial and inventory information from your Tally data.',
+                    ],
+                ],
+            ],
+        ],
+    ],
+]);
+?>
 
-/* About section expanded to use the full content width */
-#about .heading{max-width:none;width:100%;margin-bottom:34px}
-#about .heading p{max-width:none;width:100%;line-height:1.8}
-#about .cards{width:100%;grid-template-columns:repeat(2,minmax(0,1fr))}
-#about .card{height:100%}
-@media(max-width:700px){#about .cards{grid-template-columns:1fr}}
+  <!-- 1. Hero Section -->
+  <section class="hero" aria-labelledby="hero-title">
+    <style>
+    /* Floating Animated Setu Logo Reveal (~25% larger, no card container) */
+    .setu-hero-logo-svg {
+      width: min(100%, 405px);
+      height: auto;
+      display: block;
+      overflow: visible;
+    }
 
-#team{overflow:visible}
-#team>.wrap{display:block;width:calc(100% - 40px);max-width:1240px;margin:0 auto}
-#team .heading{width:100%;max-width:none}
-#team .dev-head{display:grid;grid-template-columns:150px minmax(0,1fr);align-items:start;gap:26px;width:100%;max-width:100%;box-sizing:border-box;margin:22px 0;padding:24px;border:1px solid #dce8f5;border-radius:20px;background:#fff}
-#team .dev-head img.dev-photo{grid-column:1;grid-row:1;width:140px;height:180px;object-fit:cover;object-position:center top;margin:0 auto}
-#team .dev-head>div{grid-column:2;grid-row:1;display:block;min-width:0;width:100%;max-width:none}
-#team .dev-head .dev-label,#team .dev-head h3,#team .dev-head p,#team .dev-head .dev-points{width:100%;max-width:none;min-width:0;white-space:normal;overflow-wrap:break-word}
-#team .dev-head p{font-size:15px;line-height:1.75}
-@media(max-width:620px){#team>.wrap{width:calc(100% - 24px)}#team .dev-head{grid-template-columns:1fr;gap:16px;padding:18px}#team .dev-head img.dev-photo{grid-column:1;grid-row:1}#team .dev-head>div{grid-column:1;grid-row:2}}
+    /* Step 1: Outer Border progressive draw starting from the left side (0.05s -> 1.15s) */
+    .setu-hero-logo-svg .anim-border-stroke {
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+      animation: setuDrawStroke 1.1s cubic-bezier(0.4, 0, 0.2, 1) 0.05s forwards;
+    }
 
-/* Back-office profile card consistency */
-#team .dev-head{display:grid;grid-template-columns:150px minmax(0,1fr);align-items:start;gap:26px;width:100%;max-width:100%;box-sizing:border-box}
-#team .dev-head img.dev-photo{width:140px;height:180px;object-fit:contain;object-position:center top;background:#f4f8fc;border-radius:14px}
-#team .dev-head>div{min-width:0;width:100%}
-#team .dev-head p{max-width:none;line-height:1.75;overflow-wrap:break-word}
-@media(max-width:620px){#team .dev-head{grid-template-columns:1fr;gap:16px}#team .dev-head img.dev-photo{margin:0 auto}#team .dev-head>div{grid-column:1}}
+    /* Step 2: Orbital Curves progressive draw left-to-right (0.85s -> 1.75s) */
+    .setu-hero-logo-svg .anim-curve-upper {
+      stroke-dasharray: 300;
+      stroke-dashoffset: 300;
+      animation: setuDrawStroke 0.85s cubic-bezier(0.35, 0, 0.25, 1) 0.85s forwards;
+    }
+    .setu-hero-logo-svg .anim-curve-lower {
+      stroke-dasharray: 300;
+      stroke-dashoffset: 300;
+      animation: setuDrawStroke 0.85s cubic-bezier(0.35, 0, 0.25, 1) 0.95s forwards;
+    }
 
-/* Consistent team alignment, including Ajju's back-office profile */
-#team .dev-head{display:grid !important;grid-template-columns:150px minmax(0,1fr) !important;align-items:start !important;gap:24px !important;width:100% !important;max-width:100% !important;box-sizing:border-box !important}
-#team .dev-head>img.dev-photo{grid-column:1 !important;grid-row:1 !important;width:140px !important;height:180px !important;object-fit:contain !important;object-position:center top !important;margin:0 auto !important}
-#team .dev-head>div{grid-column:2 !important;grid-row:1 !important;min-width:0 !important;width:100% !important;max-width:none !important}
-#team .dev-head p{width:100% !important;max-width:none !important;white-space:normal !important;overflow-wrap:break-word !important;line-height:1.65 !important;margin:10px 0}
-#team .dev-head h3{margin:6px 0 10px}
-@media(max-width:620px){
- #team .dev-head{grid-template-columns:1fr !important;gap:14px !important}
- #team .dev-head>img.dev-photo{grid-column:1 !important;grid-row:1 !important}
- #team .dev-head>div{grid-column:1 !important;grid-row:2 !important}
-}
+    /* Step 3: Orbital Dots moving smoothly along their curved paths (0.80s -> 1.85s) */
+    .setu-hero-logo-svg .anim-dot-green {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: setuMoveDotGreen 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.80s both;
+    }
+    .setu-hero-logo-svg .anim-dot-mid {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: setuMoveDotMid 0.85s cubic-bezier(0.25, 0.1, 0.25, 1) 0.95s both;
+    }
+    .setu-hero-logo-svg .anim-dot-right {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: setuMoveDotRight 0.95s cubic-bezier(0.25, 0.1, 0.25, 1) 0.85s both;
+    }
 
-/* Team section structural/layout repair */
-#team{display:block;position:relative;clear:both;overflow:visible}
-#team>.wrap{display:flex !important;flex-direction:column !important;align-items:stretch !important;gap:18px !important;width:min(1240px,calc(100% - 40px)) !important;max-width:1240px !important;margin:0 auto !important}
-#team .heading{width:100%;max-width:none;flex:0 0 auto}
-#team .dev-head{position:relative !important;display:grid !important;grid-template-columns:160px minmax(0,1fr) !important;align-items:start !important;gap:24px !important;flex:0 0 auto !important;width:100% !important;max-width:100% !important;min-height:0 !important;margin:0 !important;padding:22px !important;box-sizing:border-box !important;overflow:visible !important}
-#team .dev-head>img.dev-photo{position:static !important;float:none !important;display:block !important;grid-column:1 !important;grid-row:1 !important;width:140px !important;height:180px !important;max-width:100% !important;object-fit:contain !important;object-position:center top !important;margin:0 auto !important}
-#team .dev-head>div{position:static !important;display:block !important;float:none !important;grid-column:2 !important;grid-row:1 !important;width:100% !important;max-width:none !important;min-width:0 !important;margin:0 !important;padding:0 !important}
-#team .dev-head .dev-label,#team .dev-head h3,#team .dev-head p,#team .dev-head .dev-points{display:block;position:static;width:100%;max-width:none;min-width:0;box-sizing:border-box;white-space:normal;overflow-wrap:anywhere}
-#team .dev-head p{line-height:1.65;margin:10px 0}
-@media(max-width:620px){
-#team>.wrap{width:calc(100% - 24px) !important}
-#team .dev-head{grid-template-columns:1fr !important;gap:14px !important;padding:18px !important}
-#team .dev-head>img.dev-photo{grid-column:1 !important;grid-row:1 !important}
-#team .dev-head>div{grid-column:1 !important;grid-row:2 !important}
-}
+    /* Step 4: Setu Lettering (S, e, t, u) progressive mask/drawing reveal (1.55s -> 2.95s) */
+    .setu-hero-logo-svg .anim-letter-s {
+      stroke-dasharray: 500;
+      stroke-dashoffset: 500;
+      animation: setuDrawStroke 0.65s cubic-bezier(0.35, 0, 0.25, 1) 1.55s forwards;
+    }
+    .setu-hero-logo-svg .anim-letter-e {
+      stroke-dasharray: 500;
+      stroke-dashoffset: 500;
+      animation: setuDrawStroke 0.60s cubic-bezier(0.35, 0, 0.25, 1) 1.88s forwards;
+    }
+    .setu-hero-logo-svg .anim-letter-t {
+      stroke-dasharray: 400;
+      stroke-dashoffset: 400;
+      animation: setuDrawStroke 0.55s cubic-bezier(0.35, 0, 0.25, 1) 2.15s forwards;
+    }
+    .setu-hero-logo-svg .anim-letter-u {
+      stroke-dasharray: 400;
+      stroke-dashoffset: 400;
+      animation: setuDrawStroke 0.58s cubic-bezier(0.35, 0, 0.25, 1) 2.38s forwards;
+    }
 
-/* Uniform portrait dimensions and full perimeter border for every team member */
-#team .dev-head>img.dev-photo{
-  width:140px !important;
-  height:180px !important;
-  min-width:140px !important;
-  max-width:140px !important;
-  box-sizing:border-box !important;
-  object-fit:cover !important;
-  object-position:center top !important;
-  display:block !important;
-  border:2px solid #d5e4f3 !important;
-  border-radius:12px !important;
-  padding:3px !important;
-  background:#ffffff !important;
-  box-shadow:0 4px 14px rgba(18,53,95,.08) !important;
-}
-@media(max-width:620px){
- #team .dev-head>img.dev-photo{
-   width:140px !important;height:180px !important;
-   min-width:140px !important;max-width:140px !important;
- }
-}
-</style>
-</head>
-<body>
-<header><div class="wrap"><nav>
-<a href="#home"><img class="logo" src="assets/img/setu-logo.png" alt="Setu Digital Solutions"></a>
-<div class="links"><a href="#services">Services</a><a href="#products">Products</a><a href="#industries">Industries</a><a href="#team">Our Team</a><a href="#about">About</a></div>
-<a class="btn" href="#contact">Contact Us</a>
-</nav></div></header>
-<main id="home">
-<section class="hero"><div class="wrap hero-grid"><div><span class="eyebrow">BUSINESS TECHNOLOGY PARTNER</span><h1>Bridging Business.<br><span>Connects Everywhere.</span></h1><p>Practical digital solutions that connect your people, processes and business data—helping your team work smarter with Tally, web applications and industry-focused software.</p><div class="actions"><a class="btn" href="#products">Explore Solutions →</a><a class="btn" href="#contact">Talk to Our Team</a></div></div><div class="hero-logo"><img src="assets/img/setu-logo.png" alt="Setu logo"></div></div></section>
-<section id="services"><div class="wrap"><div class="heading"><span class="kicker">WHAT WE DO</span><h2>Technology that works for your business.</h2><p>From customizing Tally to connecting systems and building digital tools, we help turn everyday business challenges into streamlined workflows.</p></div><div class="cards">
-<div class="card"><h3>Tally Customization</h3><p>TDL development, reports, voucher workflows and business-specific features for Tally Prime.</p></div>
-<div class="card"><h3>ERP & API Integration</h3><p>Connect Tally with ERP, web applications and external systems to reduce manual data entry.</p></div>
-<div class="card"><h3>Web & Mobile Apps</h3><p>Digital tools for field teams, business data access and connected workflows.</p></div>
-<div class="card"><h3>MIS & Business Reports</h3><p>Meaningful summaries and reports to make business information easier to understand.</p></div>
-<div class="card"><h3>Implementation</h3><p>Requirement understanding, configuration, deployment and practical user guidance.</p></div>
-<div class="card"><h3>Support & Consulting</h3><p>Ongoing assistance, troubleshooting and solution improvements for your business systems.</p></div>
-</div></div></section>
-<section id="products" class="strip"><div class="wrap"><div class="heading"><span class="kicker">FEATURED PRODUCTS</span><h2>Solutions for connected business.</h2><p>Digital tools designed to make information accessible and everyday work more efficient.</p></div><div class="cards">
-<div class="card"><h3>SetuLink</h3><p>Connect your field team with Tally through a simple web and mobile experience.</p></div>
-<div class="card"><h3>eDocSuite</h3><p>Keep supporting documents organized and accessible alongside your business records.</p></div>
-<div class="card"><h3>Setu AI</h3><p>Explore business insights and smarter ways to understand information from your Tally data.</p></div>
-</div></div></section>
-<section id="industries"><div class="wrap"><div class="heading"><span class="kicker">INDUSTRY SOLUTIONS</span><h2>Built for the way your industry works.</h2><p>Purpose-built modules for specialized workflows across operations, inventory, finance and service management.</p></div><div class="chips"><span class="chip">Transport & Fleet</span><span class="chip">Cold Storage</span><span class="chip">Jewellery Retail</span><span class="chip">Rice & Flour Mill</span><span class="chip">Petrol Pump</span><span class="chip">Printing Press</span><span class="chip">Garments Manufacturing</span><span class="chip">Healthcare / OPD-IPD</span><span class="chip">Service Industry</span><span class="chip">Lead Management</span></div></div></section>
-<section id="team"><div class="wrap"><div class="heading"><span class="kicker">OUR TEAM</span><h2>People behind the solutions.</h2><p>A collaborative team focused on understanding your requirements, building dependable solutions and supporting your business through every stage.</p></div><div class="dev-head"><img class="dev-photo" src="assets/img/team-imtiyaz.jpg" alt="Imtiyaz Ahmad"><div><div class="dev-label">Web Development & Administration</div><h3>Imtiyaz Ahmad</h3><p>As Web Development Head and Administrator at Setu Digital Solutions, Imtiyaz Ahmad oversees website and web application development, supports implementation of digital features, and coordinates day-to-day web and administrative activities. He works on maintaining a smooth development workflow, managing web-related tasks, and coordinating with the team to deliver reliable and user-friendly business solutions.</p><div class="dev-points"><span>Web Development</span><span>Website & Applications</span><span>Administration</span></div></div></div>
-<div class="dev-head"><img class="dev-photo" src="assets/img/team-anchal.jpg" alt="Head of Development"><div><div class="dev-label">Development Leadership</div><h3>Anchal Tiwari</h3><p>Leads the development team at Setu Digital Solutions, coordinating software development and translating business requirements into practical digital solutions. Focuses on development planning, team collaboration, solution quality and delivery across Tally customization, web applications and integrations.</p><div class="dev-points"><span>Development Team</span><span>TDL & Tally Solutions</span><span>Web & Integration</span></div></div></div>
-<div class="dev-head"><img class="dev-photo" src="assets/img/team-divyanshi.jpg" alt="Head of Support"><div><div class="dev-label">Customer Support Leadership</div><h3>Divyanshi Sharma</h3><p>Leads customer support at Setu Digital Solutions, helping customers with product queries, issue coordination and day-to-day assistance. Focuses on responsive communication, understanding customer requirements, coordinating with development and implementation teams, and ensuring customers receive timely support for their business solutions.</p><div class="dev-points"><span>Customer Assistance</span><span>Issue Coordination</span><span>Support Operations</span></div></div></div>
-<div class="dev-head ajju-profile">
-<img class="dev-photo" src="assets/img/team-ajju.jpg" alt="Gulam Khwaja (Ajju)">
-<div>
-<div class="dev-label">Back Office & Digital Support</div>
-<h3>Gulam Khwaja (Ajju)</h3>
-<p>Ajju supports billing, office records, WhatsApp communication, and Facebook/social media activities at Setu Digital Solutions. He helps manage routine back-office tasks and keeps customer communication organized.</p>
-<div class="dev-points"><span>Billing & Records</span><span>WhatsApp & Social Media</span><span>Office Coordination</span></div>
-</div></div>
-<div class="dev-head"><img class="dev-photo" src="assets/img/team-yusuf.jpg" alt="Mohd Yusuf"><div><div class="dev-label">Implementation & Training</div><h3>Mohd Yusuf</h3><p>Mohd Yusuf is responsible for implementing web-based solutions at Setu Digital Solutions and helping customers adopt them effectively. He coordinates solution setup, provides user training, explains workflows, and supports customers during implementation to ensure the solutions are used smoothly in day-to-day business operations.</p><div class="dev-points"><span>Web Solution Implementation</span><span>User Training</span><span>Customer Guidance</span></div></div></div>
-</div></section>
-<section id="about"><div class="wrap">
-<div class="heading">
-<span class="kicker">ABOUT SETU DIGITAL SOLUTIONS</span>
-<h2>Connecting Business Processes with Technology</h2>
-<p>Setu Digital Solutions is a business technology company dedicated to helping businesses digitize their operations and connect their business processes seamlessly with Tally.</p>
-<p>With a strong foundation in Tally customization and TDL development, we help businesses digitize their processes and connect their operations seamlessly with technology.</p>
-<p>Our expertise includes Tally customization, TDL development, business applications, ERP/CRM solutions, system integration, and industry-specific software.</p>
-<p>We understand that every business has its own processes, requirements, and challenges. That's why we focus on developing practical, customized, and reliable technology solutions that simplify operations, reduce manual work, and improve business efficiency.</p>
-<p>At Setu Digital Solutions, we believe technology should work according to business requirements — helping businesses manage their operations more efficiently and make better use of their information.</p>
-</div>
-<div class="cards">
-<div class="card"><span class="kicker">OUR VISION</span><h3>Digitally Connected Businesses</h3><p>To create a digitally connected business environment where business processes, applications, and information work together seamlessly, with Tally as an integral part of business operations.</p></div>
-<div class="card"><span class="kicker">OUR MISSION</span><h3>Simplifying Business Operations</h3><p>To simplify business operations through practical, customized, and technology-driven solutions.</p><p><strong>We aim to:</strong></p><ul>
-<li>Digitize business processes and workflows.</li>
-<li>Connect business applications seamlessly with Tally.</li>
-<li>Reduce manual work and repetitive data entry.</li>
-<li>Improve operational efficiency and data accessibility.</li>
-<li>Develop solutions based on specific business requirements.</li>
-<li>Help businesses embrace digital transformation.</li>
-</ul></div>
-</div></div></section>
+    /* Step 5: Tagline subtle fade-in after lettering appears (2.90s -> 3.55s) */
+    .setu-hero-logo-svg .anim-tagline {
+      opacity: 0;
+      transform: translateY(6px);
+      animation: setuTaglineReveal 0.65s cubic-bezier(0.22, 1, 0.36, 1) 2.90s forwards;
+    }
 
-<section id="contact" class="setu-contact-page">
-<style>
-.setu-contact-page{padding:64px 22px 0;background:linear-gradient(135deg,#f8fbff,#edf5ff);color:#142b49}
-.setu-contact-page *{box-sizing:border-box}
-.setu-contact-page .sc-container{max-width:1180px;margin:auto}
-.setu-contact-page .sc-heading{text-align:center;margin-bottom:34px}
-.setu-contact-page .sc-heading h2{font-size:clamp(30px,4vw,46px);margin:0;color:#102f59}
-.setu-contact-page .sc-heading p{font-size:17px;color:#52657d;line-height:1.6;margin:12px auto 0;max-width:650px}
-.setu-contact-page .sc-main{display:grid;grid-template-columns:.8fr 1.2fr;gap:30px;align-items:start}
-.setu-contact-page .sc-info{padding:10px 8px}
-.setu-contact-page .sc-info-item{display:flex;gap:16px;padding:17px 0;border-bottom:1px solid #d5e2f0}
-.setu-contact-page .sc-icon{flex:0 0 54px;height:54px;border-radius:14px;background:#e0efff;color:#15518b;display:grid;place-items:center;font-size:24px}
-.setu-contact-page .sc-info-item strong{display:block;font-size:17px;margin-bottom:5px;color:#102f59}
-.setu-contact-page .sc-info-item p{margin:0;color:#465a72;line-height:1.55;overflow-wrap:anywhere}
-.setu-contact-page .sc-card{background:#fff;border:1px solid #d3e1f0;border-radius:18px;padding:28px;box-shadow:0 12px 32px #12345b12}
-.setu-contact-page .sc-card h3{margin:0 0 20px;color:#102f59;font-size:25px}
-.setu-contact-page .sc-fields{display:grid;grid-template-columns:1fr 1fr;gap:0 18px}
-.setu-contact-page label{display:block;font-weight:650;font-size:14px;margin:13px 0 6px;color:#183555}
-.setu-contact-page input,.setu-contact-page textarea,.setu-contact-page select{width:100%;padding:12px;border:1px solid #bdcfe2;border-radius:9px;background:#fff;color:#182e48;font:inherit}
-.setu-contact-page textarea{min-height:112px;resize:vertical}
-.setu-contact-page .sc-full{grid-column:1/-1}
-.setu-contact-page .sc-submit{width:100%;margin-top:18px;border:0;border-radius:10px;padding:14px;background:#123d70;color:white;font-weight:750;font-size:16px;cursor:pointer}
-.setu-contact-page .sc-submit:hover{background:#0b2c52}
-.setu-contact-page .sc-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
-.setu-contact-page .sc-info-item a{color:#123d70;text-decoration:none;font-weight:600}
-.setu-contact-page .sc-status{margin:12px 0 0;font-weight:600;font-size:15px}
-.setu-contact-page .sc-status.ok{color:#0b6b33}
-.setu-contact-page .sc-status.err{color:#b3261e}
-.setu-contact-page .sc-submit:disabled{opacity:.6;cursor:wait}
-.setu-contact-page .sc-note{font-size:12px;color:#6a7b8e;line-height:1.5;margin:12px 0 0}
-.setu-contact-page .sc-bottom{display:grid;grid-template-columns:1.15fr .85fr;gap:22px;margin:24px 0 0;padding-bottom:42px}
-.setu-contact-page .sc-quick,.setu-contact-page .sc-actions{border-radius:16px;padding:22px;background:#e5f1ff}
-.setu-contact-page .sc-quick h3,.setu-contact-page .sc-actions h3{margin:0 0 15px;font-size:20px;color:#102f59}
-.setu-contact-page .sc-quick-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-.setu-contact-page .sc-quick button{border:1px solid #b8d1ed;background:#fff;border-radius:10px;padding:14px 8px;color:#17375d;cursor:pointer;font-weight:600;min-height:66px}
-.setu-contact-page .sc-action-buttons{display:flex;gap:12px;flex-wrap:wrap}
-.setu-contact-page .sc-action-buttons a{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;border:1px solid #b7cde4;border-radius:10px;padding:13px 16px;background:#fff;color:#124c83;font-weight:700}
-.setu-contact-page .sc-action-buttons a.whatsapp{color:#087b37;border-color:#a6d7b5}
-.setu-contact-page .sc-foot{background:#102f59;color:#fff;margin:0 -22px;padding:26px 22px}
-.setu-contact-page .sc-foot-inner{max-width:1180px;margin:auto;display:flex;justify-content:space-around;gap:20px;flex-wrap:wrap}
-.setu-contact-page .sc-foot strong{display:block;margin-bottom:5px}
-.setu-contact-page .sc-foot span{font-size:13px;color:#dce8f7}
-@media(max-width:820px){.setu-contact-page .sc-main,.setu-contact-page .sc-bottom{grid-template-columns:1fr}.setu-contact-page .sc-quick-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:520px){.setu-contact-page{padding:42px 14px 0}.setu-contact-page .sc-card{padding:19px}.setu-contact-page .sc-fields{grid-template-columns:1fr}.setu-contact-page .sc-foot{margin:0 -14px}.setu-contact-page .sc-quick-grid{grid-template-columns:1fr 1fr}}
-</style>
-<div class="sc-container">
-<div class="sc-heading"><h2>Contact Us</h2><p>Have a question, requirement or want a demo? We'd be happy to help you.</p></div>
-<div class="sc-main">
-<aside class="sc-info">
-<div class="sc-info-item"><div class="sc-icon">☎</div><div><strong>Call / WhatsApp</strong><p><a href="tel:<?= h($c['phone_link']) ?>"><?= h($c['phone']) ?></a></p></div></div>
-<div class="sc-info-item"><div class="sc-icon">✉</div><div><strong>Email Us</strong><p><a href="mailto:<?= h($c['email']) ?>"><?= h($c['email']) ?></a></p></div></div>
-<div class="sc-info-item"><div class="sc-icon">⌖</div><div><strong>Our Office</strong><p>Setu Digital Solutions<br><?= h($c['address']) ?></p></div></div>
-<div class="sc-info-item"><div class="sc-icon">◷</div><div><strong>Working Hours</strong><p><?= h($c['days']) ?><br><?= h($c['hours']) ?></p></div></div>
-</aside>
-<div class="sc-card"><h3>✉ Send Us an Enquiry</h3>
-<form id="setuContactFullForm" method="post" action="api/enquiry.php">
-<div class="sc-fields">
-<div><label for="scFullName">Your Name *</label><input id="scFullName" name="name" required autocomplete="name" placeholder="Enter your name"></div>
-<div><label for="scFullMobile">Mobile Number *</label><input id="scFullMobile" name="mobile" required type="tel" pattern="[0-9+() -]{8,}" autocomplete="tel" placeholder="Enter mobile number"></div>
-<div><label for="scFullEmail">Email ID</label><input id="scFullEmail" name="email" type="email" autocomplete="email" placeholder="Enter email (optional)"></div>
-<div><label for="scFullInterest">Interested In *</label><select id="scFullInterest" name="interest" required><option value="">Select solution / service</option><option>Product Demo</option><option>Tally Customization / TDL Development</option><option>Tally Integration</option><option>Industry Solution</option><option>SetuLink / Digital Products</option><option>Website & Web Application</option><option>Support & Service</option><option>Other</option></select></div>
-<div class="sc-full"><label for="scFullMessage">Your Message *</label><textarea id="scFullMessage" name="message" required placeholder="Tell us about your requirement, query or business use case"></textarea></div>
-<div class="sc-hp" aria-hidden="true"><label for="scWebsite">Website</label><input id="scWebsite" name="website" tabindex="-1" autocomplete="off"></div>
-<div class="sc-full"><label for="scDemoDate">Preferred Demo Date (optional)</label><input id="scDemoDate" name="demo_date" type="date"></div>
-</div><button class="sc-submit" type="submit">Submit Enquiry</button>
-<p class="sc-status" id="scStatus" role="status" aria-live="polite"></p>
-<p class="sc-note">We use your details only to respond to your enquiry.</p>
-</form></div>
-</div>
-<div class="sc-bottom">
-<div class="sc-quick"><h3>Quick Enquiry For</h3><div class="sc-quick-grid">
-<button type="button" data-interest="Product Demo">▣ Product Demo</button><button type="button" data-interest="Tally Customization / TDL Development">⚙ Customization (TDL)</button><button type="button" data-interest="Industry Solution">▤ Industry Solution</button><button type="button" data-interest="Support & Service">♧ Support & Service</button>
-</div></div>
-<div class="sc-actions"><h3>You Can Also</h3><div class="sc-action-buttons"><a class="whatsapp" id="setuContactWhatsapp" href="https://wa.me/<?= h($c['whatsapp']) ?>?text=<?= rawurlencode('Hello Setu Digital Solutions, I have an enquiry.') ?>" target="_blank" rel="noopener">☏ Chat on WhatsApp</a><a href="#scDemoDate" id="setuContactDemo">▦ Schedule a Demo</a></div></div>
-</div>
-</div>
-<div class="sc-foot"><div class="sc-foot-inner"><div><strong>Quick Response</strong><span>We aim to respond at the earliest.</span></div><div><strong>Solution Guidance</strong><span>Get guidance for your business requirements.</span></div><div><strong>Ongoing Support</strong><span>Support for smooth implementation and usage.</span></div></div></div>
-<script>
-(function(){
-const form=document.getElementById('setuContactFullForm');if(!form)return;
-const interest=document.getElementById('scFullInterest'),msg=document.getElementById('scFullMessage');
-document.querySelectorAll('.setu-contact-page [data-interest]').forEach(btn=>btn.addEventListener('click',()=>{interest.value=btn.dataset.interest;document.getElementById('scFullName').focus();}));
-document.getElementById('setuContactDemo').addEventListener('click',()=>{interest.value='Product Demo';document.getElementById('scDemoDate').focus();});
-const status=document.getElementById('scStatus'),btn=form.querySelector('.sc-submit');
-form.addEventListener('submit',async e=>{e.preventDefault();status.className='sc-status';status.textContent='Sending…';btn.disabled=true;
-try{const res=await fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}});const out=await res.json().catch(()=>({}));
-if(res.ok&&out.ok){status.className='sc-status ok';status.textContent='Thank you! Your enquiry is received. Enquiry ID: '+out.id+'. Our team will contact you soon.';form.reset();}
-else{status.className='sc-status err';status.textContent=out.error||'Could not send right now. Please call or WhatsApp us.';}}
-catch(err){status.className='sc-status err';status.textContent='Network problem. Please try again, or call / WhatsApp us.';}
-finally{btn.disabled=false;}});
-})();
-</script>
-</section>
+    /* Final static lock so completed logo is 100% pixel-identical to original PNG (3.55s -> 3.75s) */
+    .setu-hero-logo-svg .anim-final-static {
+      opacity: 0;
+      animation: setuSimpleFade 0.25s ease-out 3.55s forwards;
+    }
 
-</main>
-<footer><div class="wrap foot"><div><img src="assets/img/setu-logo.png" alt="Setu Digital Solutions"><p>Bridging Business. Connects Everywhere.</p></div><div><strong>Setu Digital Solutions</strong><p>Tally Customization · Integration · Digital Products</p><p>© 2026 Setu Digital Solutions</p></div></div></footer>
+    @keyframes setuDrawStroke {
+      to { stroke-dashoffset: 0; }
+    }
+    @keyframes setuSimpleFade {
+      to { opacity: 1; }
+    }
+    @keyframes setuMoveDotGreen {
+      0%   { opacity: 0; transform: translate(-18px, 12px) scale(0.5); }
+      35%  { opacity: 1; }
+      100% { opacity: 1; transform: translate(0, 0) scale(1); }
+    }
+    @keyframes setuMoveDotMid {
+      0%   { opacity: 0; transform: translate(-111.5px, -16px) scale(0.6); }
+      18%  { opacity: 1; }
+      25%  { transform: translate(-80.7px, -20.2px) scale(0.85); }
+      50%  { transform: translate(-51.6px, -19.0px) scale(0.95); }
+      75%  { transform: translate(-24.8px, -12.2px) scale(1); }
+      100% { opacity: 1; transform: translate(0, 0) scale(1); }
+    }
+    @keyframes setuMoveDotRight {
+      0%   { opacity: 0; transform: translate(-202.5px, -65.5px) scale(0.55); }
+      15%  { opacity: 1; }
+      25%  { transform: translate(-152.3px, -77.5px) scale(0.8); }
+      50%  { transform: translate(-101.9px, -70.6px) scale(0.92); }
+      75%  { transform: translate(-51.1px, -44.8px) scale(0.98); }
+      100% { opacity: 1; transform: translate(0, 0) scale(1); }
+    }
+    @keyframes setuTaglineReveal {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
+    @media (prefers-reduced-motion: reduce) {
+      .setu-hero-logo-svg .anim-border-stroke,
+      .setu-hero-logo-svg .anim-curve-upper,
+      .setu-hero-logo-svg .anim-curve-lower,
+      .setu-hero-logo-svg .anim-letter-s,
+      .setu-hero-logo-svg .anim-letter-e,
+      .setu-hero-logo-svg .anim-letter-t,
+      .setu-hero-logo-svg .anim-letter-u {
+        stroke-dashoffset: 0;
+        animation: none;
+      }
+      .setu-hero-logo-svg .anim-dot-green,
+      .setu-hero-logo-svg .anim-dot-mid,
+      .setu-hero-logo-svg .anim-dot-right,
+      .setu-hero-logo-svg .anim-tagline,
+      .setu-hero-logo-svg .anim-final-static {
+        opacity: 1;
+        transform: none;
+        animation: none;
+      }
+    }
+    </style>
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">BUSINESS TECHNOLOGY PARTNER</span>
+        <h1 id="hero-title">Bridging Business.<br><span>Connects Everywhere.</span></h1>
+        <p class="hero-lead">Practical digital solutions that connect your people, processes and business data—helping your team work smarter with Tally Prime, web applications and industry-focused software.</p>
+        <div class="actions">
+          <a class="btn" href="products.php">Explore Products →</a>
+          <a class="btn btn-secondary" href="contact.php">Talk to Our Team</a>
+        </div>
+      </div>
+      <div class="hero-logo">
+        <svg class="setu-hero-logo-svg" viewBox="96 112 448 424" width="405" height="383" role="img" aria-label="Setu Digital Solutions Logo">
+          <defs>
+            <!-- 1. Outer Border progressive drawing mask (starts on left side, continues clockwise around frame) -->
+            <mask id="setu-mask-border" maskUnits="userSpaceOnUse" x="0" y="0" width="640" height="640">
+              <rect width="640" height="640" fill="#000" />
+              <path class="anim-border-stroke"
+                    d="M 125 380 L 125 210 A 68 68 0 0 1 193 142 L 446 142 A 68 68 0 0 1 514 210 L 514 440 A 68 68 0 0 1 446 508 L 193 508 A 68 68 0 0 1 125 440 L 125 380"
+                    fill="none" stroke="#fff" stroke-width="28" stroke-linecap="round" pathLength="1000" />
+            </mask>
 
+            <!-- 2. Orbital Curves progressive drawing mask (draws left-to-right, excluding the 3 dots and 't' stem) -->
+            <mask id="setu-mask-curves" maskUnits="userSpaceOnUse" x="0" y="0" width="640" height="640">
+              <rect width="640" height="640" fill="#000" />
+              <path class="anim-curve-upper"
+                    d="M 282 227 Q 382 184 478 282"
+                    fill="none" stroke="#fff" stroke-width="18" stroke-linecap="round" pathLength="300" />
+              <path class="anim-curve-lower"
+                    d="M 284 236 Q 384 216 463 314"
+                    fill="none" stroke="#fff" stroke-width="16" stroke-linecap="round" pathLength="300" />
+              <!-- Exclude the 3 orbital dots and 't' stem from the curve layer -->
+              <circle cx="269.5" cy="235" r="14.5" fill="#000" />
+              <circle cx="395.5" cy="252" r="11.2" fill="#000" />
+              <circle cx="484.5" cy="292.5" r="16.8" fill="#000" />
+              <rect x="328" y="262" width="32" height="60" fill="#000" />
+            </mask>
 
-</body></html>
+            <!-- 3. Clip paths for the 3 existing orbital dots -->
+            <clipPath id="setu-clip-dot-green" clipPathUnits="userSpaceOnUse">
+              <circle cx="269.5" cy="235" r="15" />
+            </clipPath>
+            <clipPath id="setu-clip-dot-mid" clipPathUnits="userSpaceOnUse">
+              <circle cx="395.5" cy="252" r="11.6" />
+            </clipPath>
+            <clipPath id="setu-clip-dot-right" clipPathUnits="userSpaceOnUse">
+              <circle cx="484.5" cy="292.5" r="17.2" />
+            </clipPath>
+
+            <!-- 4. Setu Lettering (S, e, t, u) region & sequential drawing mask -->
+            <mask id="setu-letters-region" maskUnits="userSpaceOnUse" x="0" y="0" width="640" height="640">
+              <rect width="640" height="640" fill="#000" />
+              <rect x="138" y="250" width="340" height="184" fill="#fff" />
+              <circle cx="269.5" cy="235" r="15.5" fill="#000" />
+              <path d="M 280 190 L 505 190 L 505 318 L 362 318 L 362 262 L 280 262 Z" fill="#000" />
+            </mask>
+
+            <mask id="setu-mask-letters" maskUnits="userSpaceOnUse" x="0" y="0" width="640" height="640">
+              <rect width="640" height="640" fill="#000" />
+              <g mask="url(#setu-letters-region)">
+                <path class="anim-letter-s"
+                      d="M 282 292 C 258 252, 165 252, 168 296 C 170 338, 252 346, 250 388 C 246 424, 175 424, 144 388"
+                      fill="none" stroke="#fff" stroke-width="86" stroke-linecap="round" stroke-linejoin="round" pathLength="500" />
+                <path class="anim-letter-e"
+                      d="M 235 350 C 265 305, 335 308, 395 332 M 260 382 L 326 382 C 326 350, 264 350, 264 390 C 264 424, 316 424, 328 406"
+                      fill="none" stroke="#fff" stroke-width="70" stroke-linecap="round" stroke-linejoin="round" pathLength="500" />
+                <path class="anim-letter-t"
+                      d="M 344 262 L 344 395 C 344 420, 368 422, 388 412"
+                      fill="none" stroke="#fff" stroke-width="68" stroke-linecap="round" stroke-linejoin="round" pathLength="400" />
+                <path class="anim-letter-u"
+                      d="M 398 325 L 398 392 C 398 422, 460 422, 460 392 L 460 320"
+                      fill="none" stroke="#fff" stroke-width="74" stroke-linecap="round" stroke-linejoin="round" pathLength="400" />
+              </g>
+            </mask>
+
+            <!-- 5. Tagline clip path ("Bridging Business. Connects Everywhere.") -->
+            <clipPath id="setu-clip-tagline" clipPathUnits="userSpaceOnUse">
+              <rect x="140" y="435" width="360" height="45" />
+            </clipPath>
+          </defs>
+
+          <!-- Step 1: Outer Border -->
+          <image href="assets/img/setu-logo.png" width="640" height="640" mask="url(#setu-mask-border)" />
+
+          <!-- Step 2: Orbital Curves -->
+          <image href="assets/img/setu-logo.png" width="640" height="640" mask="url(#setu-mask-curves)" />
+
+          <!-- Step 3: Orbital Dots moving smoothly along their curved paths -->
+          <g class="anim-dot-green">
+            <image href="assets/img/setu-logo.png" width="640" height="640" clip-path="url(#setu-clip-dot-green)" />
+          </g>
+          <g class="anim-dot-mid">
+            <image href="assets/img/setu-logo.png" width="640" height="640" clip-path="url(#setu-clip-dot-mid)" />
+          </g>
+          <g class="anim-dot-right">
+            <image href="assets/img/setu-logo.png" width="640" height="640" clip-path="url(#setu-clip-dot-right)" />
+          </g>
+
+          <!-- Step 4: Setu Lettering (S, e, t, u) -->
+          <image href="assets/img/setu-logo.png" width="640" height="640" mask="url(#setu-mask-letters)" />
+
+          <!-- Step 5: Tagline Fade-In -->
+          <g class="anim-tagline">
+            <image href="assets/img/setu-logo.png" width="640" height="640" clip-path="url(#setu-clip-tagline)" />
+          </g>
+
+          <!-- Final Static Lock -->
+          <image class="anim-final-static" href="assets/img/setu-logo.png" width="640" height="640" />
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. 5-Box Core Capabilities Bar -->
+  <div class="wrap feature-strip-wrap">
+    <div class="feature-strip">
+      <a class="feature-box reveal" href="services.php#tally-customization">
+        <span class="feature-num">01</span>
+        <h4>Tally Prime &amp; TDL Customization</h4>
+      </a>
+      <a class="feature-box reveal" href="products.php">
+        <span class="feature-num">02</span>
+        <h4>Customized Software Solutions</h4>
+      </a>
+      <a class="feature-box reveal" href="services.php#erp-integration">
+        <span class="feature-num">03</span>
+        <h4>ERP &amp; Third-Party Integration</h4>
+      </a>
+      <a class="feature-box reveal" href="services.php#implementation">
+        <span class="feature-num">04</span>
+        <h4>Solution Implementation Services</h4>
+      </a>
+      <a class="feature-box reveal" href="services.php#support">
+        <span class="feature-num">05</span>
+        <h4>User Training &amp; Dedicated Support</h4>
+      </a>
+    </div>
+  </div>
+
+  <!-- 3. Brief Company Introduction (Links to About Us & Our Team Pages) -->
+  <section aria-labelledby="welcome-title">
+    <div class="wrap">
+      <div class="about-split">
+        <div class="about-panel reveal">
+          <span class="kicker">WHY SETU DIGITAL SOLUTIONS</span>
+          <h3>Built Around How Real Businesses Work Every Day</h3>
+          <p>Instead of forcing your staff to change how they operate, we build Tally customizations, field apps, and integrations that fit naturally into your daily workflow.</p>
+          <div class="about-highlights">
+            <div class="about-stat-box">
+              <strong>100%</strong>
+              <span>Client-Focused Delivery</span>
+            </div>
+            <div class="about-stat-box">
+              <strong>10+</strong>
+              <span>Industry Verticals Served</span>
+            </div>
+          </div>
+          <div class="call-box">
+            <div class="call-icon" aria-hidden="true">☎</div>
+            <div>
+              <small>Call or WhatsApp our team directly</small>
+              <a href="tel:<?= h($c['phone_link']) ?>"><?= h($c['phone']) ?></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-story reveal">
+          <span class="kicker">WHO WE ARE</span>
+          <h2 id="welcome-title">Connecting Business Processes with Technology</h2>
+          <p>Setu Digital Solutions is a business technology company dedicated to helping businesses digitize their operations and connect their day-to-day workflows seamlessly with Tally Prime.</p>
+          <p>With a strong foundation in Tally customization and TDL development, we deliver practical web applications, ERP integrations, and industry-specific modules that reduce manual work and improve efficiency.</p>
+          <div class="actions" style="margin-top: 24px;">
+            <a class="btn" href="about.php">Read Our Story →</a>
+            <a class="btn btn-secondary" href="team.php">Meet Our Team</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Featured Products Overview (Links to Products Page) -->
+  <section class="strip" aria-labelledby="home-products-title">
+    <div class="wrap">
+      <div class="section-head-row reveal">
+        <div class="heading">
+          <span class="kicker">FEATURED PRODUCTS</span>
+          <h2 id="home-products-title">Digital Products Built for Tally Users</h2>
+          <p style="margin:0;">Extend Tally Prime to your field sales team, your document archive, and your management desk.</p>
+        </div>
+        <a class="btn btn-secondary" href="products.php">View All Product Details →</a>
+      </div>
+
+      <div class="cards">
+        <article class="card reveal">
+          <div>
+            <span class="kicker">FIELD MOBILITY</span>
+            <h3>SetuLink</h3>
+            <p>Connect your field sales and collection team with Tally through a simple web and mobile experience for live ledgers, outstanding bills, and remote order booking.</p>
+          </div>
+          <a class="card-foot" href="products.php#setulink"><span>Explore SetuLink</span><span>→</span></a>
+        </article>
+
+        <article class="card reveal">
+          <div>
+            <span class="kicker">DOCUMENT MANAGEMENT</span>
+            <h3>eDocSuite</h3>
+            <p>Keep supporting documents, purchase bills, transport bilty, and invoices neatly organized and accessible right alongside your Tally business records.</p>
+          </div>
+          <a class="card-foot" href="products.php#edocsuite"><span>Explore eDocSuite</span><span>→</span></a>
+        </article>
+
+        <article class="card reveal">
+          <div>
+            <span class="kicker">BUSINESS INTELLIGENCE</span>
+            <h3>Setu AI</h3>
+            <p>Explore actionable business insights, financial trends, and smarter ways to understand sales and inventory performance from your Tally data.</p>
+          </div>
+          <a class="card-foot" href="products.php#setu-ai"><span>Explore Setu AI</span><span>→</span></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Core Services Summary (Links to Services Page) -->
+  <section aria-labelledby="home-services-title">
+    <div class="wrap">
+      <div class="section-head-row reveal">
+        <div class="heading">
+          <span class="kicker">WHAT WE DO</span>
+          <h2 id="home-services-title">Customization, Integration &amp; Ongoing Support</h2>
+          <p style="margin:0;">End-to-end engineering and implementation services tailored around your accounting and operational systems.</p>
+        </div>
+        <a class="btn btn-secondary" href="services.php">Explore All 6 Services →</a>
+      </div>
+
+      <div class="cards">
+        <article class="card reveal">
+          <div>
+            <h3>Tally Customization (TDL)</h3>
+            <p>Custom TDL development, specialized GST invoice print formats, voucher approval workflows, and business-specific controls for Tally Prime.</p>
+          </div>
+          <a class="card-foot" href="services.php#tally-customization"><span>Service Details</span><span>→</span></a>
+        </article>
+
+        <article class="card reveal">
+          <div>
+            <h3>ERP &amp; API Integration</h3>
+            <p>Connect Tally Prime with ERP systems, CRM platforms, and external web applications to eliminate repetitive manual data entry.</p>
+          </div>
+          <a class="card-foot" href="services.php#erp-integration"><span>Service Details</span><span>→</span></a>
+        </article>
+
+        <article class="card reveal">
+          <div>
+            <h3>Implementation &amp; Support</h3>
+            <p>Requirement analysis, workflow configuration, practical staff training, and responsive day-to-day technical assistance.</p>
+          </div>
+          <a class="card-foot" href="services.php#implementation"><span>Service Details</span><span>→</span></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Solid Navy Authority Stats Banner -->
+  <section class="stats-banner" aria-label="Key Business Achievements">
+    <div class="wrap">
+      <h2 class="reveal">Dependable Solutions Backed by Real Expertise</h2>
+      <p class="stats-sub reveal">Focus on your business growth while our team streamlines your accounting, inventory, and digital workflows.</p>
+      <div class="stats-grid">
+        <div class="stat-card reveal">
+          <strong>500+</strong>
+          <span>Custom TDL &amp; Workflows</span>
+        </div>
+        <div class="stat-card reveal">
+          <strong>10+</strong>
+          <span>Specialized Industry Verticals</span>
+        </div>
+        <div class="stat-card reveal">
+          <strong>100%</strong>
+          <span>Practical Business Focus</span>
+        </div>
+        <div class="stat-card reveal">
+          <strong>Mon–Sat</strong>
+          <span>Dedicated Customer Support</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Industry Solutions Preview (Links to Solutions Page) -->
+  <section aria-labelledby="home-industries-title">
+    <div class="wrap">
+      <div class="section-head-row reveal">
+        <div class="heading">
+          <span class="kicker">INDUSTRY SOLUTIONS</span>
+          <h2 id="home-industries-title">Purpose-Built Modules For Your Industry</h2>
+          <p style="margin:0;">Specialized Tally workflows for manufacturing, storage, logistics, retail, and service businesses.</p>
+        </div>
+        <a class="btn btn-secondary" href="solutions.php">View All 10 Industries →</a>
+      </div>
+
+      <div class="chips reveal" aria-label="Industries We Serve" style="margin-top:0;">
+        <a class="chip" href="solutions.php#transport-fleet">Transport &amp; Fleet</a>
+        <a class="chip" href="solutions.php#cold-storage">Cold Storage</a>
+        <a class="chip" href="solutions.php#jewellery-retail">Jewellery Retail</a>
+        <a class="chip" href="solutions.php#rice-flour-mill">Rice &amp; Flour Mill</a>
+        <a class="chip" href="solutions.php#petrol-pump">Petrol Pump</a>
+        <a class="chip" href="solutions.php#printing-press">Printing Press</a>
+        <a class="chip" href="solutions.php#garments-manufacturing">Garments Manufacturing</a>
+        <a class="chip" href="solutions.php#healthcare">Healthcare / OPD-IPD</a>
+        <a class="chip" href="solutions.php#service-industry">Service Industry</a>
+        <a class="chip" href="solutions.php#lead-management">Lead Management</a>
+      </div>
+    </div>
+  </section>
+
+<?php
+setu_render_cta_strip(
+    'Ready to streamline your Tally and business workflows?',
+    'Schedule a free consultation or live product demonstration with our team today.',
+    'Contact Us Now →',
+    'contact.php'
+);
+setu_render_footer();
