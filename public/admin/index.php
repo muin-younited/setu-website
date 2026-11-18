@@ -83,8 +83,8 @@ if ($logged) {
 <title>Enquiries – SETU Admin</title>
 <style>
 :root{--ink:#102f59;--muted:#52657d;--line:#d5e2f0;--bg:#f4f8fd;--brand:#123d70}
-*{box-sizing:border-box}
-body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:#182e48}
+*{box-sizing:border-box;font-family:'Times New Roman',Times,serif}
+body{margin:0;font-family:'Times New Roman',Times,serif;background:var(--bg);color:#182e48}
 .bar{background:var(--ink);color:#fff;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
 .bar a{color:#dce8f7}
 .wrap{max-width:1280px;margin:0 auto;padding:20px}
