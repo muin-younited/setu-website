@@ -1,0 +1,83 @@
+# Setu Digital Solutions — Comprehensive AI & Search Knowledge Profile
+
+## Company Overview
+- **Company Name**: Setu Digital Solutions
+- **Tagline**: Bridging Business. Connects Everywhere.
+- **Primary Focus**: Business Technology Partner for Tally Prime Customization, TDL Development, ERP/API Integration, Web & Mobile Business Software, and Industry-Specific ERP Modules.
+- **Headquarters**: Lucknow, Uttar Pradesh, India
+- **Service Area**: Lucknow, Uttar Pradesh, and Pan-India (remote & on-site implementation)
+- **Email**: setuinfo09@gmail.com
+- **Operating Hours**: Monday – Saturday, 10:00 AM – 7:00 PM IST
+
+---
+
+## Detailed Products Catalog
+
+### 1. SetuLink (Web & Mobile Field Application for Tally)
+- **Category**: Field Sales, Collection & Customer Ledger Portal for Tally Prime
+- **Summary**: Connects field sales executives, collection agents, and branch managers with Tally Prime via a secure web and mobile interface without exposing the main Tally server.
+- **Key Features**:
+  - Real-time customer ledger, bill-wise outstanding, and stock balance visibility.
+  - Remote sales order booking and payment receipt voucher logging from mobile.
+  - One-click WhatsApp and PDF sharing of invoices, ledgers, and outstanding reminders.
+  - Role-based access control for sales representatives, area managers, and business owners.
+
+### 2. eDocSuite (Document Management System for Tally)
+- **Category**: Digital Document Archiving & Voucher Attachment Software
+- **Summary**: Keeps supporting business documents organized, searchable, and linked directly alongside Tally Prime financial records.
+- **Key Features**:
+  - Attach scanned bills, purchase invoices, transport bilty, delivery challans, and contracts to specific vouchers.
+  - Instant search and audit-ready retrieval during tax, GST, or statutory audits.
+  - Eliminates physical file hunting and paper loss across accounting departments.
+
+### 3. Setu AI (Business Intelligence & Analytics for Tally)
+- **Category**: AI-Assisted Financial & Inventory Analytics
+- **Summary**: Helps business owners and decision-makers explore insights, trends, and anomalies from their Tally Prime data.
+- **Key Features**:
+  - Visual sales, profitability, margin, and inventory movement trends.
+  - Overdue receivables and cash-flow bottleneck alerts.
+  - Executive summaries designed for quick leadership review.
+
+---
+
+## Detailed Services
+
+1. **Tally Customization (TDL Development)**
+   - Custom TDL modules for Tally Prime.
+   - Bespoke GST invoice, packing slip, gate pass, and voucher print layouts.
+   - Multi-level voucher approval workflows, user-wise security restrictions, and Negative Stock/Credit Limit controls.
+2. **ERP & API Integration**
+   - Bidirectional synchronization between Tally Prime and third-party ERPs, CRMs, e-commerce websites, billing systems, and custom databases using REST APIs, JSON, and XML.
+   - Automated posting of sales, purchases, receipts, payments, and inventory masters.
+3. **Web & Mobile Apps**
+   - Custom web portals and mobile business applications connected with accounting and operational databases.
+4. **MIS & Business Reports**
+   - Custom financial, inventory, cost-center, branch-wise, and salesperson-wise MIS reports.
+5. **Implementation & User Training**
+   - End-to-end requirement analysis, workflow mapping, deployment, and hands-on staff training.
+6. **Support & Consulting**
+   - Dedicated helpdesk troubleshooting, workflow consulting, and continuous upgrades.
+
+---
+
+## Industry-Specific Tally Solutions
+
+1. **Transport & Fleet Management**: Consignment/bilty tracking, vehicle trip profitability, driver/diesel expense ledgers, and freight billing in Tally.
+2. **Cold Storage**: Inward/outward gate pass, lot/rack/chamber allocation, seasonal rent calculation, and automated farmer/party billing.
+3. **Jewellery Retail**: Fine weight, wastage, making charges, hallmarking details, and Karigar metal/account reconciliation.
+4. **Rice & Flour Mill**: Paddy/wheat procurement, milling batch production, by-product yield ratios, and bardana (gunny bag) stock tracking.
+5. **Petrol Pump**: Nozzle/meter reading reconciliation, shift-wise sales summary, lubricant inventory, and credit customer slip billing.
+6. **Printing Press**: Job-card estimation, paper/ink consumption, plate/binding stages, and order-wise profitability.
+7. **Garments Manufacturing**: Cutting, stitching, finishing job-work tracking, size/color matrix inventory, and contractor billing.
+8. **Healthcare / OPD-IPD**: Patient billing synchronization, pharmacy/consumable inventory, and department-wise revenue posting in Tally.
+9. **Service Industry**: AMC/contract tracking, recurring billing, and service ticket workflow integration.
+10. **Lead Management**: Enquiry capture, follow-up scheduling, demo tracking, and quotation-to-invoice conversion.
+
+---
+
+## Team & Leadership
+- **Imtiyaz Ahmad (Web Development & Administration)**: Oversees website and web application development, supports implementation of digital features, and coordinates day-to-day web and administrative workflows.
+- **Anchal Tiwari (Development Leadership)**: Leads the software development team, translating business requirements into TDL customizations, web applications, and ERP integrations.
+- **Divyanshi Sharma (Customer Support Leadership)**: Leads customer support operations, assisting clients with product queries, issue coordination, and timely day-to-day technical help.
+- **Gulam Khwaja / Ajju (Back Office & Digital Support)**: Manages billing, office records, WhatsApp communication, and social media coordination.
+- **Md Yusuf (Implementation & Training)**: Handles solution setup, customer onboarding, workflow explanation, and hands-on user training.
