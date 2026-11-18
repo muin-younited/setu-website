@@ -1,0 +1,43 @@
+# Setu Digital Solutions
+
+> Setu Digital Solutions is a business technology partner based in Lucknow, Uttar Pradesh, India, specializing in Tally Prime customization, TDL (Tally Definition Language) development, ERP & API integration, web & mobile business applications (SetuLink, eDocSuite, Setu AI), and industry-specific Tally ERP modules.
+
+## Key Website Pages
+- [Home](https://setudigitalsolutions.com/): Overview of Setu Digital Solutions, core capabilities, products, industry verticals, team, and FAQs.
+- [About Us](https://setudigitalsolutions.com/about.php): Company story, vision, mission, and 3-step delivery approach.
+- [Services](https://setudigitalsolutions.com/services.php): Detailed breakdown of Tally Customization (TDL), ERP & API Integration, Web & Mobile Apps, MIS Reports, Implementation, and Support.
+- [Products](https://setudigitalsolutions.com/products.php): Detailed capabilities of SetuLink, eDocSuite, and Setu AI.
+- [Industry Solutions](https://setudigitalsolutions.com/solutions.php): Dedicated modules for Transport & Fleet, Cold Storage, Jewellery Retail, Rice & Flour Mill, Petrol Pump, Printing Press, Garments Manufacturing, Healthcare / OPD-IPD, Service Industry, and Lead Management.
+- [Our Team](https://setudigitalsolutions.com/team.php): Profiles of Imtiyaz Ahmad, Anchal Tiwari, Divyanshi Sharma, Gulam Khwaja (Ajju), and Md Yusuf.
+- [Contact Us](https://setudigitalsolutions.com/contact.php): Enquiry form, product demo scheduling, WhatsApp link, and Lucknow office details.
+- [Full AI Knowledge Profile](https://setudigitalsolutions.com/llms-full.txt): Complete product, service, and industry documentation.
+
+## Core Services
+- **Tally Customization & TDL Development**: Bespoke TDL modules, custom GST invoice print formats, role-based approval workflows, voucher automation, and specialized accounting/inventory controls for Tally Prime.
+- **ERP & API Integration**: Two-way integration connecting Tally Prime with ERP platforms, CRM software, e-commerce portals, billing software, and external REST/JSON/XML APIs to eliminate repetitive manual data entry.
+- **Web & Mobile Business Applications**: Custom web dashboards and mobile portals for field teams, remote order booking, live customer ledger access, and connected multi-branch workflows.
+- **MIS & Business Reports**: Executive financial summaries, receivables ageing, cash-flow tracking, cost-center performance, and automated MIS reporting.
+- **Solution Implementation & Training**: Requirement discovery, workflow configuration, deployment, and practical department-wise staff training.
+- **Support & Consulting**: Ongoing technical assistance, troubleshooting, and continuous business system improvements.
+
+## Featured Digital Products
+- **SetuLink**: Web and mobile field-force application that connects sales and collection teams with Tally Prime for live customer ledger viewing, outstanding tracking, remote sales order booking, payment receipt entry, and instant PDF/WhatsApp sharing.
+- **eDocSuite**: Digital document management software that attaches, organizes, and retrieves supporting invoices, bills, transport bilty, and contracts directly alongside Tally business records.
+- **Setu AI**: Business intelligence and analytics platform that transforms Tally Prime accounting and inventory data into clear trends, KPIs, anomaly alerts, and executive summaries.
+
+## Specialized Industry Solutions
+- Transport & Fleet Management
+- Cold Storage (Inward/Outward Gate Pass, Lot & Chamber Rent Billing)
+- Jewellery Retail (Fine Weight & Karigar Accounting)
+- Rice & Flour Mill (Production Batch & Yield Tracking)
+- Petrol Pump (Shift & Nozzle Sales Accounting)
+- Printing Press (Job-Work & Costing)
+- Garments Manufacturing (Multi-Stage Production & Inventory)
+- Healthcare / OPD-IPD Billing Integration
+- Service Industry & Lead Management CRM
+
+## Contact & Location
+- **Website**: https://setudigitalsolutions.com/
+- **Email**: setuinfo09@gmail.com
+- **Location**: Lucknow, Uttar Pradesh, India
+- **Working Hours**: Monday – Saturday, 10:00 AM – 7:00 PM IST
