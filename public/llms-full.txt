@@ -57,6 +57,10 @@
    - End-to-end requirement analysis, workflow mapping, deployment, and hands-on staff training.
 6. **Support & Consulting**
    - Dedicated helpdesk troubleshooting, workflow consulting, and continuous upgrades.
+7. **Bulk SMS & Bulk WhatsApp Messaging — Communications Platform as a Service (CPaaS)**
+   - High-delivery promotional and transactional Bulk SMS campaigns with DLT compliance support.
+   - Bulk WhatsApp business messaging supporting rich media, PDFs, invoices, and product catalogues.
+   - Automated OTPs, payment due reminders, and real-time order/dispatch notifications integrated with Tally Prime and business APIs.
 
 ---
 

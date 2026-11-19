@@ -19,6 +19,7 @@
 - **MIS & Business Reports**: Executive financial summaries, receivables ageing, cash-flow tracking, cost-center performance, and automated MIS reporting.
 - **Solution Implementation & Training**: Requirement discovery, workflow configuration, deployment, and practical department-wise staff training.
 - **Support & Consulting**: Ongoing technical assistance, troubleshooting, and continuous business system improvements.
+- **Bulk SMS & Bulk WhatsApp Messaging (CPaaS)**: Communications Platform as a Service for promotional and transactional Bulk SMS (with DLT support), Bulk WhatsApp campaigns with PDFs/invoices, automated OTPs, payment reminders, and Tally/API messaging integration.
 
 ## Featured Digital Products
 - **SetuLink**: Web and mobile field-force application that connects sales and collection teams with Tally Prime for live customer ledger viewing, outstanding tracking, remote sales order booking, payment receipt entry, and instant PDF/WhatsApp sharing.

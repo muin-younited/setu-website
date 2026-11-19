@@ -5,20 +5,20 @@ $baseUrl = setu_base_url();
 setu_render_header([
     'active'       => 'services',
     'path'         => 'services.php',
-    'title'        => 'Our Services | Tally Prime Customization, TDL Development, ERP Integration & Support — Setu Digital Solutions',
-    'description'  => 'Explore Setu Digital Solutions services: Tally Prime customization (TDL development), ERP & API integration, web & mobile business apps, MIS reporting, implementation, and support.',
-    'keywords'     => 'Tally Customization Services, TDL Development Tally Prime, Tally ERP API Integration, Tally MIS Reports, Tally Implementation & Training, Tally Support Lucknow',
+    'title'        => 'Our Services | Tally Prime Customization, ERP Integration, Bulk SMS & WhatsApp (CPaaS) — Setu Digital Solutions',
+    'description'  => 'Explore Setu Digital Solutions services: Tally Prime customization (TDL development), ERP & API integration, Bulk SMS & Bulk WhatsApp messaging (CPaaS), web & mobile business apps, MIS reporting, implementation, and support.',
+    'keywords'     => 'Tally Customization Services, TDL Development Tally Prime, Tally ERP API Integration, Bulk SMS Provider Lucknow, Bulk WhatsApp Messaging Service, Communications Platform as a Service CPaaS, Tally MIS Reports, Tally Support Lucknow',
     'page_heading' => 'Our Services',
-    'page_sub'     => 'From customizing Tally Prime to connecting external systems and building digital tools, we turn everyday business challenges into streamlined workflows.',
+    'page_sub'     => 'From customizing Tally Prime and integrating external systems to powering Bulk SMS & WhatsApp business communications (CPaaS), we turn everyday business challenges into streamlined workflows.',
     'breadcrumb'   => 'Services',
     'extra_schema' => [
         [
             '@type'       => 'Service',
             '@id'         => $baseUrl . '/services.php#services-catalog',
-            'name'        => 'Tally Prime Customization, ERP Integration & Digital Application Services',
+            'name'        => 'Tally Prime Customization, ERP Integration, CPaaS Messaging & Digital Application Services',
             'provider'    => ['@id' => $baseUrl . '/#organization'],
             'areaServed'  => ['@type' => 'Country', 'name' => 'India'],
-            'description' => 'End-to-end Tally Prime customization (TDL), two-way ERP/API integration, web and mobile apps, MIS reporting, implementation, and ongoing support.',
+            'description' => 'End-to-end Tally Prime customization (TDL), two-way ERP/API integration, Bulk SMS & Bulk WhatsApp messaging (Communications Platform as a Service / CPaaS), web and mobile apps, MIS reporting, implementation, and ongoing support.',
         ],
     ],
 ]);
@@ -157,6 +157,27 @@ setu_render_header([
               <li>Troubleshooting for Tally customizations and integrations</li>
               <li>Periodic workflow reviews and feature enhancements</li>
               <li>Guidance on Tally Prime upgrades and multi-user performance</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Service 7: CPaaS (Bulk SMS & Bulk WhatsApp) -->
+        <article class="showcase-row reveal" id="cpaas-messaging">
+          <div>
+            <span class="kicker">07 · COMMUNICATIONS PLATFORM AS A SERVICE (CPaaS)</span>
+            <h3>Bulk SMS &amp; Bulk WhatsApp Messaging</h3>
+            <p>Reach your customers instantly with reliable, high-delivery Bulk SMS and Bulk WhatsApp messaging solutions. Our Communications Platform as a Service (CPaaS) enables businesses to send promotional campaigns, transactional alerts, OTPs, payment reminders, and automated invoice notifications directly from their business applications or Tally workflows.</p>
+            <div class="actions" style="margin-top: 20px;">
+              <a class="btn" href="contact.php?interest=<?= rawurlencode('Bulk SMS & WhatsApp (CPaaS)') ?>">Enquire About Bulk SMS &amp; WhatsApp →</a>
+            </div>
+          </div>
+          <div class="showcase-side">
+            <h4>Key Capabilities</h4>
+            <ul>
+              <li>High-delivery promotional &amp; transactional Bulk SMS campaigns with DLT support</li>
+              <li>Bulk WhatsApp messaging with rich media, PDFs, invoices, and product catalogues</li>
+              <li>Automated OTPs, payment reminders, and real-time order/dispatch notifications</li>
+              <li>Seamless API &amp; Tally Prime integration with live delivery reports and analytics</li>
             </ul>
           </div>
         </article>

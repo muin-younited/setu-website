@@ -102,6 +102,7 @@ setu_render_header([
                       'Product Demo',
                       'Tally Customization / TDL Development',
                       'Tally Integration',
+                      'Bulk SMS & WhatsApp (CPaaS)',
                       'Industry Solution',
                       'SetuLink / Digital Products',
                       'Website & Web Application',

@@ -70,6 +70,7 @@ function setu_render_header(array $meta = []): void {
                 'Document Management Systems',
                 'Business Intelligence for Tally',
                 'Industry ERP Modules',
+                'Bulk SMS & Bulk WhatsApp Messaging (CPaaS)',
             ],
         ],
         [

@@ -425,13 +425,13 @@ setu_render_header([
       <div class="section-head-row reveal">
         <div class="heading">
           <span class="kicker">WHAT WE DO</span>
-          <h2 id="home-services-title">Customization, Integration &amp; Ongoing Support</h2>
-          <p style="margin:0;">End-to-end engineering and implementation services tailored around your accounting and operational systems.</p>
+          <h2 id="home-services-title">Customization, Integration, CPaaS &amp; Support</h2>
+          <p style="margin:0;">End-to-end engineering, customer communication platforms, and implementation services tailored around your business systems.</p>
         </div>
-        <a class="btn btn-secondary" href="services.php">Explore All 6 Services →</a>
+        <a class="btn btn-secondary" href="services.php">Explore All 7 Services →</a>
       </div>
 
-      <div class="cards">
+      <div class="cards-2">
         <article class="card reveal">
           <div>
             <h3>Tally Customization (TDL)</h3>
@@ -446,6 +446,14 @@ setu_render_header([
             <p>Connect Tally Prime with ERP systems, CRM platforms, and external web applications to eliminate repetitive manual data entry.</p>
           </div>
           <a class="card-foot" href="services.php#erp-integration"><span>Service Details</span><span>→</span></a>
+        </article>
+
+        <article class="card reveal">
+          <div>
+            <h3>Bulk SMS &amp; WhatsApp (CPaaS)</h3>
+            <p>Communications Platform as a Service (CPaaS) for high-delivery Bulk SMS and Bulk WhatsApp campaigns, automated invoice alerts, OTPs, and payment reminders.</p>
+          </div>
+          <a class="card-foot" href="services.php#cpaas-messaging"><span>Service Details</span><span>→</span></a>
         </article>
 
         <article class="card reveal">
