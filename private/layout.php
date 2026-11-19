@@ -118,12 +118,23 @@ function setu_render_header(array $meta = []): void {
     }
 
     $jsonLd = json_encode(['@context' => 'https://schema.org', '@graph' => $graph], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+
+    if (!headers_sent()) {
+        header('X-Content-Type-Options: nosniff');
+        header('X-Frame-Options: SAMEORIGIN');
+        header('Referrer-Policy: strict-origin-when-cross-origin');
+        header('Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()');
+        header("Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://formsubmit.co; font-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'self' https://formsubmit.co; frame-ancestors 'self'; upgrade-insecure-requests");
+    }
     ?>
 <!doctype html>
 <html lang="en-IN">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://formsubmit.co; font-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests">
 <title><?= h($title) ?></title>
 <meta name="description" content="<?= h($description) ?>">
 <meta name="keywords" content="<?= h($keywords) ?>">
@@ -1365,7 +1376,7 @@ function setu_render_footer(): void {
         <h4>Social Links</h4>
         <ul class="social-links-list" aria-label="Social Media Links">
           <li>
-            <a href="<?= h($fb) ?>" target="_blank" rel="noopener">
+            <a href="<?= h($fb) ?>" target="_blank" rel="noopener noreferrer">
               <span class="social-icon-box" aria-hidden="true">
                 <svg viewBox="0 0 24 24"><path d="M13.5 22v-8.2h2.8l.4-3.2h-3.2V8.5c0-.9.3-1.6 1.6-1.6h1.7V4.1c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.3H7.3v3.2h2.8V22h3.4z"/></svg>
               </span>
@@ -1373,7 +1384,7 @@ function setu_render_footer(): void {
             </a>
           </li>
           <li>
-            <a href="<?= h($ig) ?>" target="_blank" rel="noopener">
+            <a href="<?= h($ig) ?>" target="_blank" rel="noopener noreferrer">
               <span class="social-icon-box" aria-hidden="true">
                 <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1.1.4 2.2.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1.1.4-2.2.4-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1.1-.4-2.2-.1-1.3-.1-1.6-.1-4.8s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1.1-.4 2.2-.4 1.2-.1 1.6-.1 4.8-.1zM12 0C8.7 0 8.3 0 7.1.1 5.8.1 4.9.3 4.1.6c-.8.3-1.5.7-2.2 1.4C1.2 2.7.8 3.3.5 4.1c-.3.8-.5 1.7-.5 3C0 8.3 0 8.7 0 12s0 3.7.1 4.9c.1 1.3.3 2.1.6 2.9.3.8.7 1.5 1.4 2.2.7.7 1.3 1.1 2.1 1.4.8.3 1.6.5 2.9.6 1.2.1 1.6.1 4.9.1s3.7 0 4.9-.1c1.3-.1 2.1-.3 2.9-.6.8-.3 1.5-.7 2.2-1.4.7-.7 1.1-1.3 1.4-2.1.3-.8.5-1.6.6-2.9.1-1.2.1-1.6.1-4.9s0-3.7-.1-4.9c-.1-1.3-.3-2.1-.6-2.9-.3-.8-.7-1.5-1.4-2.2C21.3 1.2 20.7.8 19.9.5c-.8-.3-1.6-.5-2.9-.6C15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 1 0 0 12.4 6.2 6.2 0 0 0 0-12.4zm0 10.2a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.8a1.4 1.4 0 1 0 0 2.8 1.4 1.4 0 0 0 0-2.8z"/></svg>
               </span>
@@ -1381,7 +1392,7 @@ function setu_render_footer(): void {
             </a>
           </li>
           <li>
-            <a href="<?= h($li) ?>" target="_blank" rel="noopener">
+            <a href="<?= h($li) ?>" target="_blank" rel="noopener noreferrer">
               <span class="social-icon-box" aria-hidden="true">
                 <svg viewBox="0 0 24 24"><path d="M6.9 20.5H3.6V9h3.3v11.5zM5.3 7.4a1.9 1.9 0 1 1 0-3.8 1.9 1.9 0 0 1 0 3.8zM20.5 20.5h-3.3v-5.6c0-1.3 0-3-1.9-3s-2.1 1.4-2.1 2.9v5.7H9.9V9h3.2v1.6h.1c.4-.8 1.5-1.9 3.1-1.9 3.3 0 3.9 2.2 3.9 5v6.8z"/></svg>
               </span>
@@ -1389,7 +1400,7 @@ function setu_render_footer(): void {
             </a>
           </li>
           <li>
-            <a href="<?= h($yt) ?>" target="_blank" rel="noopener">
+            <a href="<?= h($yt) ?>" target="_blank" rel="noopener noreferrer">
               <span class="social-icon-box" aria-hidden="true">
                 <svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>
               </span>
@@ -1397,7 +1408,7 @@ function setu_render_footer(): void {
             </a>
           </li>
           <li>
-            <a href="<?= h($wa) ?>" target="_blank" rel="noopener">
+            <a href="<?= h($wa) ?>" target="_blank" rel="noopener noreferrer">
               <span class="social-icon-box" aria-hidden="true">
                 <svg viewBox="0 0 24 24"><path d="M20.5 3.5A11.8 11.8 0 0 0 12 0C5.5 0 .2 5.3.2 11.8c0 2.1.5 4.1 1.6 5.9L0 24l6.5-1.7a11.9 11.9 0 0 0 5.5 1.4c6.5 0 11.8-5.3 11.8-11.8 0-3.2-1.2-6.2-3.3-8.4zM12 21.7c-1.8 0-3.5-.5-5.1-1.4l-.4-.2-3.8 1 1-3.7-.2-.4a9.8 9.8 0 0 1-1.5-5.2c0-5.4 4.4-9.8 9.8-9.8 2.6 0 5.1 1 6.9 2.9a9.7 9.7 0 0 1 2.9 6.9c.1 5.4-4.3 9.9-9.6 9.9zm5.4-7.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.4-1.5-.9-.8-1.5-1.8-1.6-2.1-.2-.3 0-.5.1-.6l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.1-1.4-.1-.1-.3-.2-.6-.3z"/></svg>
               </span>
@@ -1416,6 +1427,11 @@ function setu_render_footer(): void {
 
 <script>
 (function(){
+  // Anti-Clickjacking frame-busting defense
+  if (window.top !== window.self) {
+    try { window.top.location = window.self.location.href; } catch (_) {}
+  }
+
   if (window.history && window.history.replaceState) {
     const p = window.location.pathname;
     if (p.endsWith('/index.html')) {
