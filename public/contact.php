@@ -128,7 +128,7 @@ setu_render_header([
         <div class="sc-quick"><h3>Quick Enquiry For</h3><div class="sc-quick-grid">
           <button type="button" data-interest="Product Demo">▣ Product Demo</button><button type="button" data-interest="Tally Customization / TDL Development">⚙ Customization (TDL)</button><button type="button" data-interest="Industry Solution">▤ Industry Solution</button><button type="button" data-interest="Support &amp; Service">♧ Support &amp; Service</button>
         </div></div>
-        <div class="sc-actions"><h3>You Can Also</h3><div class="sc-action-buttons"><a class="whatsapp" id="setuContactWhatsapp" href="https://wa.me/<?= h($c['whatsapp']) ?>?text=<?= rawurlencode('Hello Setu Digital Solutions, I have an enquiry.') ?>" target="_blank" rel="noopener">☏ Chat on WhatsApp</a><a href="#scDemoDate" id="setuContactDemo">▦ Schedule a Demo</a></div></div>
+        <div class="sc-actions"><h3>You Can Also</h3><div class="sc-action-buttons"><a class="whatsapp" id="setuContactWhatsapp" href="https://wa.me/<?= h($c['whatsapp']) ?>?text=<?= rawurlencode('Hello Setu Digital Solutions, I have an enquiry.') ?>" target="_blank" rel="noopener noreferrer">☏ Chat on WhatsApp</a><a href="#scDemoDate" id="setuContactDemo">▦ Schedule a Demo</a></div></div>
       </div>
     </div>
     <div class="sc-foot"><div class="sc-foot-inner"><div><strong>Quick Response</strong><span>We aim to respond at the earliest.</span></div><div><strong>Solution Guidance</strong><span>Get guidance for your business requirements.</span></div><div><strong>Ongoing Support</strong><span>Support for smooth implementation and usage.</span></div></div></div>
@@ -136,15 +136,21 @@ setu_render_header([
     (function(){
       const form = document.getElementById('setuContactFullForm');
       if (!form) return;
+      const pageLoadedAt = Date.now();
+      const COOLDOWN_MS = 60000;
       const interest = document.getElementById('scFullInterest');
       const nameInput = document.getElementById('scFullName');
       const msgInput = document.getElementById('scFullMessage');
 
+      function sanitizeText(val, maxLen) {
+        return String(val || '').replace(/<[^>]*>/g, '').trim().slice(0, maxLen);
+      }
+
       // Support query params (?interest=...&product=...&industry=...) on static GitHub Pages builds
       const params = new URLSearchParams(window.location.search);
-      const qInterest = (params.get('interest') || '').trim();
-      const qProduct = (params.get('product') || '').trim();
-      const qIndustry = (params.get('industry') || '').trim();
+      const qInterest = sanitizeText(params.get('interest'), 100);
+      const qProduct = sanitizeText(params.get('product'), 80);
+      const qIndustry = sanitizeText(params.get('industry'), 80);
       if (qInterest && interest) {
         for (const opt of interest.options) {
           if (opt.value === qInterest || opt.text === qInterest) {
@@ -181,15 +187,22 @@ setu_render_header([
       const btn = form.querySelector('.sc-submit');
 
       async function sendViaStaticEmail(fd) {
+        const cleanName = sanitizeText(fd.get('name'), 100);
+        const cleanMobile = sanitizeText(fd.get('mobile'), 20);
+        const cleanEmail = sanitizeText(fd.get('email'), 150);
+        const cleanInterest = sanitizeText(fd.get('interest'), 100);
+        const cleanDemo = sanitizeText(fd.get('demo_date'), 10);
+        const cleanMsg = sanitizeText(fd.get('message'), 3000);
         const payload = {
-          _subject: 'New SETU Website Enquiry – ' + (fd.get('name') || '') + ' (' + (fd.get('interest') || '') + ')',
+          _subject: 'New SETU Website Enquiry – ' + cleanName + ' (' + cleanInterest + ')',
           _template: 'table',
-          Name: fd.get('name') || '',
-          Mobile: fd.get('mobile') || '',
-          Email: fd.get('email') || '-',
-          Interested_In: fd.get('interest') || '',
-          Preferred_Demo_Date: fd.get('demo_date') || '-',
-          Message: fd.get('message') || ''
+          _honey: sanitizeText(fd.get('website'), 100),
+          Name: cleanName,
+          Mobile: cleanMobile,
+          Email: cleanEmail || '-',
+          Interested_In: cleanInterest,
+          Preferred_Demo_Date: cleanDemo || '-',
+          Message: cleanMsg
         };
         const res = await fetch('https://formsubmit.co/ajax/' + encodeURIComponent(notifyEmail), {
           method: 'POST',
@@ -206,10 +219,38 @@ setu_render_header([
 
       form.addEventListener('submit', async e => {
         e.preventDefault();
+        const fd = new FormData(form);
+
+        // 1. Anti-bot honeypot & instant automated submit trap
+        if (String(fd.get('website') || '').trim() !== '' || (Date.now() - pageLoadedAt) < 1500) {
+          status.className = 'sc-status ok';
+          status.textContent = 'Thank you! Your enquiry is received. Enquiry ID: SETU-0000.';
+          form.reset();
+          return;
+        }
+
+        // 2. Client-side rate limit (60s cooldown against spam flooding)
+        try {
+          const lastTs = parseInt(localStorage.getItem('setu_last_enquiry_ts') || '0', 10);
+          if (lastTs && (Date.now() - lastTs) < COOLDOWN_MS) {
+            const waitSec = Math.ceil((COOLDOWN_MS - (Date.now() - lastTs)) / 1000);
+            status.className = 'sc-status err';
+            status.textContent = 'Please wait ' + waitSec + 's before submitting another enquiry.';
+            return;
+          }
+        } catch (_) {}
+
+        // 3. Strict input validation
+        const digits = String(fd.get('mobile') || '').replace(/\D/g, '');
+        if (digits.length < 10 || digits.length > 13) {
+          status.className = 'sc-status err';
+          status.textContent = 'Please enter a valid 10-digit mobile number.';
+          return;
+        }
+
         status.className = 'sc-status';
         status.textContent = 'Sending…';
         btn.disabled = true;
-        const fd = new FormData(form);
         try {
           let result = null;
           // Try PHP backend first when hosted on a PHP server
@@ -233,6 +274,7 @@ setu_render_header([
             result = await sendViaStaticEmail(fd);
           }
           if (result.ok) {
+            try { localStorage.setItem('setu_last_enquiry_ts', String(Date.now())); } catch (_) {}
             status.className = 'sc-status ok';
             status.textContent = 'Thank you! Your enquiry is received. Enquiry ID: ' + result.id + '. Our team will contact you soon.';
             form.reset();
