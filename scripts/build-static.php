@@ -48,10 +48,11 @@ foreach ($pages as $srcFile => $outFile) {
         exit(1);
     }
 
-    // Rewrite internal .php page links to .html for static hosting
+    // Rewrite internal .php page links to clean extensionless URLs for GitHub Pages
+    $html = str_replace('href="index.php"', 'href="./"', $html);
     $html = preg_replace(
-        '/\b(index|about|products|services|solutions|team|contact)\.php\b/',
-        '$1.html',
+        '/\b(about|products|services|solutions|team|contact)\.php\b/',
+        '$1',
         $html
     );
 
@@ -68,8 +69,8 @@ foreach ($staticFiles as $file) {
         $content = file_get_contents($publicDir . '/' . $file);
         if ($file === 'sitemap.xml') {
             $content = preg_replace(
-                '/\b(index|about|products|services|solutions|team|contact)\.php\b/',
-                '$1.html',
+                '/\b(about|products|services|solutions|team|contact)\.php\b/',
+                '$1',
                 $content
             );
         }

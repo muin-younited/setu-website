@@ -1416,6 +1416,15 @@ function setu_render_footer(): void {
 
 <script>
 (function(){
+  if (window.history && window.history.replaceState) {
+    const p = window.location.pathname;
+    if (p.endsWith('/index.html')) {
+      window.history.replaceState(null, '', p.slice(0, -10) + window.location.search + window.location.hash);
+    } else if (p.endsWith('.html')) {
+      window.history.replaceState(null, '', p.slice(0, -5) + window.location.search + window.location.hash);
+    }
+  }
+
   const header = document.getElementById('siteHeader');
   const menuBtn = document.getElementById('menuBtn');
   const navLinks = document.getElementById('navLinks');
