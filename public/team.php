@@ -22,7 +22,14 @@ setu_render_header([
       </div>
 
       <div class="team-stack">
-        <article class="dev-head reveal">
+        <style>
+        .dev-head { scroll-margin-top: 105px; }
+        .dev-head:target {
+          border-color: var(--blue);
+          box-shadow: 0 0 0 3px rgba(8, 120, 249, 0.18), 0 14px 32px #102a561a;
+        }
+        </style>
+        <article class="dev-head reveal" id="imtiyaz-ahmad">
           <img class="dev-photo" src="assets/img/team-imtiyaz.jpg" alt="Imtiyaz Ahmad" width="140" height="180">
           <div>
             <div class="dev-label">Web Development &amp; Administration</div>
@@ -32,7 +39,7 @@ setu_render_header([
           </div>
         </article>
 
-        <article class="dev-head reveal">
+        <article class="dev-head reveal" id="anchal-tiwari">
           <img class="dev-photo" src="assets/img/team-anchal.jpg" alt="Anchal Tiwari" width="140" height="180" loading="lazy">
           <div>
             <div class="dev-label">Development Leadership</div>
@@ -42,7 +49,7 @@ setu_render_header([
           </div>
         </article>
 
-        <article class="dev-head reveal">
+        <article class="dev-head reveal" id="divyanshi-sharma">
           <img class="dev-photo" src="assets/img/team-divyanshi.jpg" alt="Divyanshi Sharma" width="140" height="180" loading="lazy">
           <div>
             <div class="dev-label">Customer Support Leadership</div>
@@ -52,7 +59,7 @@ setu_render_header([
           </div>
         </article>
 
-        <article class="dev-head ajju-profile reveal">
+        <article class="dev-head ajju-profile reveal" id="gulam-khwaja">
           <img class="dev-photo" src="assets/img/team-ajju.jpg" alt="Gulam Khwaja (Ajju)" width="140" height="180" loading="lazy">
           <div>
             <div class="dev-label">Back Office &amp; Digital Support</div>
@@ -62,7 +69,8 @@ setu_render_header([
           </div>
         </article>
 
-        <article class="dev-head reveal">
+        <article class="dev-head reveal" id="md-yusuf">
+          <span id="yusuf" style="position:absolute;margin-top:-105px;"></span>
           <img class="dev-photo" src="assets/img/team-yusuf.jpg?v=2" alt="Md Yusuf" width="140" height="180" loading="lazy">
           <div>
             <div class="dev-label">Implementation &amp; Training</div>
