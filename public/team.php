@@ -1,15 +1,37 @@
 <?php
 require __DIR__ . '/../private/layout.php';
+$baseUrl = setu_base_url();
 
 setu_render_header([
     'active'       => 'team',
     'path'         => 'team.php',
     'title'        => 'Our Team | Leadership, Development, Support & Implementation — Setu Digital Solutions',
-    'description'  => 'Meet the team behind Setu Digital Solutions: Imtiyaz Ahmad, Anchal Tiwari, Divyanshi Sharma, Gulam Khwaja (Ajju), and Md Yusuf—dedicated to building and supporting your Tally and web solutions.',
-    'keywords'     => 'Setu Digital Solutions Team, Imtiyaz Ahmad Setu, Anchal Tiwari TDL Developer, Divyanshi Sharma Support, Md Yusuf Implementation, Gulam Khwaja Ajju',
+    'description'  => 'Meet the team behind Setu Digital Solutions: Imtiyaz Ahmad, Anchal Tiwari, Divyanshi Sharma, Gulam Khwaja (Ajju), and Md Yusuf (Software Executive)—dedicated to building, implementing, testing, and supporting your Tally and web solutions.',
+    'keywords'     => 'Setu Digital Solutions Team, Imtiyaz Ahmad Setu, Anchal Tiwari TDL Developer, Divyanshi Sharma Support, Md Yusuf Software Executive Setu Digital Solutions, Md Yusuf Software Implementation, Gulam Khwaja Ajju',
     'page_heading' => 'Our Team',
     'page_sub'     => 'A collaborative team focused on understanding your requirements, building dependable solutions, and supporting your business through every stage.',
     'breadcrumb'   => 'Our Team',
+    'extra_schema' => [
+        [
+            '@type'       => 'Person',
+            '@id'         => $baseUrl . '/team.php#md-yusuf',
+            'name'        => 'Md Yusuf',
+            'jobTitle'    => 'Software Executive',
+            'url'         => $baseUrl . '/team.php#md-yusuf',
+            'image'       => $baseUrl . '/assets/img/team-yusuf.jpg',
+            'worksFor'    => ['@id' => $baseUrl . '/#organization'],
+            'description' => 'Md Yusuf is a Software Executive at Setu Digital Solutions responsible for software implementation, system configuration, client coordination, user training, system testing, and post-implementation support.',
+            'knowsAbout'  => [
+                'Software Implementation',
+                'System Configuration',
+                'Client Coordination',
+                'User Training',
+                'System Testing',
+                'Post-Implementation Support',
+                'Tally Prime & Web Business Solutions',
+            ],
+        ],
+    ],
 ]);
 ?>
 
@@ -69,14 +91,14 @@ setu_render_header([
           </div>
         </article>
 
-        <article class="dev-head reveal" id="md-yusuf">
+        <article class="dev-head reveal" id="md-yusuf" itemscope itemtype="https://schema.org/Person">
           <span id="yusuf" style="position:absolute;margin-top:-105px;"></span>
-          <img class="dev-photo" src="assets/img/team-yusuf.jpg?v=2" alt="Md Yusuf" width="140" height="180" loading="lazy">
+          <img class="dev-photo" src="assets/img/team-yusuf.jpg?v=2" alt="Md Yusuf — Software Executive at Setu Digital Solutions" width="140" height="180" loading="lazy" itemprop="image">
           <div>
-            <div class="dev-label">Implementation &amp; Training</div>
-            <h3>Md Yusuf</h3>
-            <p>Md Yusuf is responsible for implementing web-based solutions at Setu Digital Solutions and helping customers adopt them effectively. He coordinates solution setup, provides user training, explains workflows, and supports customers during implementation to ensure the solutions are used smoothly in day-to-day business operations.</p>
-            <div class="dev-points"><span>Web Solution Implementation</span><span>User Training</span><span>Customer Guidance</span></div>
+            <div class="dev-label" itemprop="jobTitle">Software Executive</div>
+            <h3 itemprop="name">Md Yusuf</h3>
+            <p itemprop="description">As Software Executive at Setu Digital Solutions, Md Yusuf oversees end-to-end software implementation, system configuration, and client coordination across Tally Prime solutions and web-based business applications. He conducts thorough system testing to ensure reliable deployment, delivers practical hands-on user training, and provides dedicated post-implementation support so businesses can operate smoothly and achieve maximum efficiency in their day-to-day workflows.</p>
+            <div class="dev-points"><span>Software Implementation</span><span>System Configuration</span><span>Client Coordination</span><span>User Training</span><span>System Testing</span><span>Post-Implementation Support</span></div>
           </div>
         </article>
       </div>

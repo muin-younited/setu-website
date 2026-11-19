@@ -80,4 +80,4 @@
 - **Anchal Tiwari (Development Leadership)**: Leads the software development team, translating business requirements into TDL customizations, web applications, and ERP integrations.
 - **Divyanshi Sharma (Customer Support Leadership)**: Leads customer support operations, assisting clients with product queries, issue coordination, and timely day-to-day technical help.
 - **Gulam Khwaja / Ajju (Back Office & Digital Support)**: Manages billing, office records, WhatsApp communication, and social media coordination.
-- **Md Yusuf (Implementation & Training)**: Handles solution setup, customer onboarding, workflow explanation, and hands-on user training.
+- **Md Yusuf (Software Executive)**: Responsible for end-to-end software implementation, system configuration, client coordination, system testing, hands-on user training, and post-implementation support at Setu Digital Solutions.
