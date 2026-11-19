@@ -20,7 +20,7 @@ return [
         'facebook'   => 'https://www.facebook.com/',
         'instagram'  => 'https://www.instagram.com/',
         'linkedin'   => 'https://www.linkedin.com/',
-        'youtube'    => 'https://www.youtube.com/',
+        'youtube'    => 'https://www.youtube.com/@setu7501',
     ],
 
     // Enquiries ka database (web root ke bahar, taaki koi download na kar sake)

@@ -58,6 +58,9 @@ function setu_render_header(array $meta = []): void {
             ],
             'areaServed'   => ['@type' => 'Country', 'name' => 'India'],
             'openingHours' => 'Mo-Sa 10:00-19:00',
+            'sameAs'       => [
+                $c['youtube'] ?? 'https://www.youtube.com/@setu7501',
+            ],
             'knowsAbout'   => [
                 'Tally Prime Customization',
                 'TDL (Tally Definition Language) Development',
