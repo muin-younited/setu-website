@@ -62,6 +62,9 @@ foreach ($pages as $srcFile => $outFile) {
 
 // Copy static assets and SEO files
 copyRecursive($publicDir . '/assets', $distDir . '/assets');
+if (is_dir($publicDir . '/.well-known')) {
+    copyRecursive($publicDir . '/.well-known', $distDir . '/.well-known');
+}
 
 $staticFiles = ['robots.txt', 'sitemap.xml', 'llms.txt', 'llms-full.txt'];
 foreach ($staticFiles as $file) {
