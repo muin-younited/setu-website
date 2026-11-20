@@ -1215,14 +1215,53 @@ footer p { color: #b9cce2; font-size: 15px; margin: 0 0 10px; }
   }
   .dev-head > img.dev-photo { grid-column: 1; grid-row: 1; }
   .dev-head > div { grid-column: 1; grid-row: 2; }
+  footer {
+    padding: 36px 0 24px;
+  }
   .foot-grid {
     grid-template-columns: 1fr 1fr;
-    gap: 24px 20px;
+    gap: 22px 20px;
   }
   .foot-col-brand {
     grid-column: 1 / -1;
-    padding-bottom: 18px;
-    border-bottom: 1px solid #1e3f78;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 8px 6px;
+    border-bottom: 0;
+  }
+  .foot-col-brand img {
+    display: block;
+    width: 170px;
+    max-width: 52%;
+    height: auto;
+    margin: -22px auto -14px;
+  }
+  .foot-col-brand .foot-tagline {
+    color: var(--white);
+    font-size: clamp(18px, 4.8vw, 20px);
+    font-weight: 700;
+    line-height: 1.3;
+    max-width: 280px;
+    margin: 0 auto 10px;
+  }
+  .foot-col-brand .foot-desc {
+    color: #c8daf0;
+    font-size: 14.5px;
+    line-height: 1.55;
+    max-width: 320px;
+    margin: 0 auto 20px;
+  }
+  .foot-col-brand::after {
+    content: "";
+    display: block;
+    width: 80%;
+    max-width: 280px;
+    height: 1.5px;
+    background: #4e8ff7;
+    border-radius: 2px;
+    margin: 0 auto;
   }
   .foot-col-links {
     grid-column: 1;
@@ -1351,8 +1390,8 @@ function setu_render_footer(): void {
     <div class="foot-grid">
       <div class="foot-col-brand">
         <img src="assets/img/setu-logo.png" alt="Setu Digital Solutions" width="155" height="58" loading="lazy">
-        <p>Bridging Business. Connects Everywhere.</p>
-        <p>Practical Tally Prime customizations, ERP integrations, and digital business applications tailored to how your team works.</p>
+        <p class="foot-tagline">Bridging Business. Connects Everywhere.</p>
+        <p class="foot-desc">Practical Tally Prime customizations, ERP integrations, and digital business applications tailored to how your team works.</p>
       </div>
       <div class="foot-col-links">
         <h4>Quick Links</h4>
