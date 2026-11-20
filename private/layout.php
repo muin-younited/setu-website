@@ -1051,6 +1051,26 @@ footer h4 {
   margin: 0 0 14px;
 }
 footer p { color: #b9cce2; font-size: 15px; margin: 0 0 10px; }
+.foot-col-brand img {
+  display: block;
+  width: 195px;
+  height: auto;
+  margin: -34px 0 -22px -34px;
+}
+.foot-col-brand .foot-tagline {
+  color: var(--white);
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.35;
+  margin: 0 0 10px;
+}
+.foot-col-brand .foot-desc {
+  color: #d2e2f5;
+  font-size: 16px;
+  line-height: 1.65;
+  max-width: 340px;
+  margin: 0;
+}
 .foot-list {
   list-style: none;
   padding: 0;
